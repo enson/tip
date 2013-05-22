@@ -660,6 +660,6 @@ KISSY.add(function(S){
 	return Tip;
 	
 },{
-	requires:['overlay'/*'zoo/base/'*/]	
+	requires:['overlay','./node-extension']	
 });
 
