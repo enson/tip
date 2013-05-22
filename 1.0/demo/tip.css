@@ -1,0 +1,137 @@
+
+
+	.z-tip {
+		border-radius:4px;
+		box-shadow:0px 0px 8px 1px #bbb;
+		background:white;
+		border:1px solid #cfcfcf;
+		padding:8px;
+		position:absolute;
+
+		/*test*/
+		left:100px;
+		margin-top:20px;
+	}
+	.z-tip {
+		max-width:350px;
+		min-width:120px;
+		/*
+		*width:expression((this.width > 350) ? "350px" : this.width + "px" );
+		*/
+	}
+	.z-tip .z-taper {
+		background:url('http://img01.taobaocdn.com/tps/i1/T1dlUgXhpeXXaSQP_X-16-16.png') no-repeat transparent;
+		display:block;
+		overflow:hidden;
+		position:absolute;
+	}
+	.z-tip .z-close {
+		position:absolute;
+		width:18px;height:14px;
+		cursor:pointer;
+		font:bold 10px/13px Tahoma,sans-serif;
+		text-align:center;
+		border:1px solid #aaa;
+		color:#777;
+		text-indent:0;
+		border-radius:3px;
+		vertical-align:middle;
+		text-decoration:none;
+		display:block;
+		top:4px;right:4px;
+		display:none;
+
+	}
+	.tl .z-taper{
+		background-position:0px 0px;
+		width:16px;height:8px;
+		top:-8px;
+		left:15px;
+	}
+
+	.tc .z-taper{
+		background-position:0px 0px;
+		width:16px;height:8px;
+		top:-8px;
+		left:50%;
+		margin-left:-8px;
+	}
+
+	.tr .z-taper{
+		background-position:0px 0px;
+		width:16px;height:8px;
+		top:-8px;
+		right:15px;
+	}
+
+	.br .z-taper{
+		background-position:0px -8px;
+		width:16px;height:8px;
+		bottom:-8px;
+		right:15px;
+	}
+
+	.bl .z-taper{
+		background-position:0px -8px;
+		width:16px;height:8px;
+		bottom:-8px;
+		left:15px;
+	}
+
+	.bc .z-taper{
+		background-position:0px -8px;
+		width:16px;height:8px;
+		bottom:-8px;
+		left:50%;
+		margin-left:-8px;
+	}
+
+	.rt .z-taper{
+		background-position:-8px 0px;
+		width:8px;height:16px;
+		right:-8px;
+		top:15px;
+	}
+
+	.rb .z-taper{
+		background-position:-8px 0px;
+		width:8px;height:16px;
+		right:-8px;
+		bottom:15px;
+	}
+
+	.rc .z-taper{
+		background-position:-8px 0px;
+		width:8px;height:16px;
+		right:-8px;
+		top:50%;
+		margin-top:-8px;
+	}
+
+
+	.lt .z-taper{
+		background-position:0px 0px;
+		width:8px;height:16px;
+		left:-8px;
+		top:15px;
+	}
+
+	.lb .z-taper{
+		background-position:0px 0px;
+		width:8px;height:16px;
+		left:-8px;
+		bottom:15px;
+	}
+
+	.lc .z-taper{
+		background-position:0px 0px;
+		width:8px;height:16px;
+		left:-8px;
+		top:50%;
+		margin-top:-8px;
+	}
+
+
+
+
+

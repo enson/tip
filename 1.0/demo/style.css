@@ -1,0 +1,48 @@
+
+.base-style {
+	width:160px;height:52px;
+}
+.base-style li {
+	display:block;
+	float:left;width:18px;height:18px;border:1px solid #ccc;margin-left:6px;margin-top:6px;
+	cursor:pointer;
+}
+
+.custom-tip-style {
+	width:300px;border:5px solid #116497;
+	padding:0px;
+	border-radius:4px;
+}
+
+.custom-tip-style .hd {
+	background-color: #0D7CD0;
+	color:white;
+	font-size:11px;
+	padding:4px;
+}
+
+.custom-tip-style .z-close {
+	position:absolute;
+	width:18px;height:14px;
+	cursor:pointer;
+	font:bold 10px/13px Tahoma,sans-serif;
+	text-align:center;
+	border:0px solid #aaa;
+	background:#116497;
+	color:white;
+	text-indent:0;
+	border-radius:3px;
+	vertical-align:middle;
+	text-decoration:none;
+	display:block;
+	top:4px;right:4px;
+	display:none;
+}
+
+.custom-tip-style .bd{
+	padding:5px;
+	line-height:150%;
+	background:#1E90FF;
+	color:white;
+	font-size:11px;
+}

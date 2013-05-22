@@ -4,11 +4,100 @@
     <meta charset="utf-8"/>
     <title>demo标题</title>
     <script src="http://a.tbcdn.cn/s/kissy/1.3.0/kissy-min.js" charset="utf-8"></script>
+	<link rel="stylesheet" href="http://a.tbcdn.cn/s/kissy/1.3.0/css/dpl/base.css" />
+	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="tip.css" />
+	<style>
+		p {
+			margin-left:20px;
+		}
+	</style>
 </head>
 <body>
-<h2>demo标题</h2>
+<h2>基本模式</h2>
 
-<span id="tip" title="xxxxx">tset</span>
+<img src="http://img01.taobaocdn.com/tps/i1/T1UJ.yXe0XXXcdxjrn-251-203.png" style="box-shadow: 0px 0px 6px 1px #bbb; float:right;margin-left:10px;"/>
+
+<ul class="base-style">
+	<li id="tip1"></li>
+	<li id="tip2"></li>
+	<li id="tip3"></li>
+	<li id="tip4"></li>
+	<li id="tip5"></li>
+	<li id="tip6"></li>
+	<li id="tip7"></li>
+	<li id="tip8"></li>
+	<li id="tip9"></li>
+	<li id="tip10"></li>
+	<li id="tip11"></li>
+	<li id="tip12"></li>
+</ul>
+
+<p>基本的交互模式，通过鼠标触碰来显示tip，tip包含标题和正文，上面这些例子中，鼠标移开触碰点，tip立即消逝，可以通过配置`fleeting:false`来禁止tip浮层立即消逝，以便鼠标可以移动到tip浮层之上。</p>
+
+<a href="javascript:void(0);" id="t1">鼠标可移入Tip</a>，<a href="javascript:void(0);" id="t2">鼠标不可移入Tip</a>
+
+<p>即，比较简单的模式中，常用的配置为`headerText`,`contentText`,`points`,`offsetX`,`offsetY`,`mouseHook`等，这些参数决定Tip浮层的基本行为。默认情况下的Tip的行为是触碰显示，鼠标移开触碰点立即消逝，从dom节点的title字段取数据，相对于鼠标进行定位，不会跟随鼠标移动而移动，比如<a href="#" id="simpletip" title="title字段包含默认提示信息">触碰这里</a>。通过如下最简单的代码来初始化。</p>
+
+<hr class="smooth large" />
+
+<h2>富交互模式</h2>
+
+<p>自定义样式：<a href="#" id="rich1" title="自定义样式">触碰这里</a>，通过`tipClass`来传入自定义样式，将会替换默认的`z-tip`。弹层会默认显示在可视范围内，即默认`smarty`取值为`true`</p>
+
+<hr class="smooth" />
+
+<h2>打开和展现方式 </h2>
+
+<p><a href="javascript:void(0);" id="rich2" title="">点击这里</a>打开，点击空白处关闭。让浮层带有关闭按钮。<a href="javascript:void(0);" id="rich3">点击这里下拉展开Tip</a>，配置`effect:'slide'`，ie中默认关闭展开特效。<a href="javascript:void(0);" id="rich4">获得焦点</a>时显示。</p>
+
+<p><a href="javascript:void(0);" id="rich5">点击打开浮层，但点击空白处不能关闭</a>，只能点击关闭按钮才能关闭Tip浮层。配置`hideOnEmptyClick:false`。</p>
+
+<p>触碰点接近浏览器可视范围的边缘，浮层将会自动弹出在可视范围内。若不希望自动适应可视窗口范围，需配置`smarty:false`。</p>
+
+<hr class="smooth" />
+
+<h2>Ajax交互</h2>
+
+<a href="javascript:void(0);" id="rich6">点击Ajax</a>
+
+<p>Ajax获取数据，两种方法，第一种是绑定show事件，每次显示的时候都获取一下数据，另一种方式是利用配置参数`getConentText`函数和`staticContent`属性。在`getContentText`中设置要写入tip的数据，`staticContent`设置为`true`表明为一次写入的数据。第二次显示时不会再次取数据。</p>
+
+<p>在这个过程中，需要注意的是Ajax过程中Tip浮层尺寸和定位的变化，当尺寸发生变化时需要重新给Tip作定位，这个工作由使用者来完成。调用方法：</p>
+
+<p>self.rePosition();</p>
+
+<p>如果重新定位后发现浮层内容溢出当前显示区域，可以重新渲染Tip，以便其显示在可视区域内（当然，前提是配置了`smarty:true`） :</p>
+
+<p>self.rerender();</p>
+
+<p>当`smarty:true`时，浮层在各个方向上显示都不在可视区域内的时候，Tip浮层默认选择一个最佳的位置显示。</p>
+
+<hr class="smooth" />
+
+<h2>位置修正</h2>
+
+<img src="http://img02.taobaocdn.com/tps/i2/T1PzQwXldaXXX0RdAg-495-102.png" alt="" />
+
+<p>由于本组件对浮层的实现，无法跟随Tip箭头，Tip的箭头只能固定十二个位置，因此当浮层弹出时有时需要为了修正箭头的位置而调整Tip浮层的位置，比如为了达到上图的效果，即箭头和触点水平对齐，需要传入`revise`参数，revise是一个函数，参数为箭头的位置，有十二种可能，参照[API页面](tip-readme.md)。用法参照上一个例子。</p>
+
+<hr class="smooth" />
+
+<a href="javascript:void(0);" id="rich8" >点击弹出尺寸可变Tip</a>（没有smarty），超出浏览器窗口范围时无修正,
+
+<a href="javascript:void(0);" id="rich9" >点击弹出尺寸可变Tip</a>（带有smarty），超出浏览器窗口时有修正
+
+<hr class="smooth" />
+
+<h2>延迟打开</h2>
+
+<a href="javascript:void(0);" id="rich7" title="触碰a标签，1秒延时过后打开Tip">鼠标触碰，延迟1m展开</a>
+
+这时的数据从a标签的title属性中取。
+
+<hr class="smooth" />
+
+如果配置了`smarty:true`，则窗口尺寸变化时，Tip会自动显示在可是范围内。
 
 <script>
     var S = KISSY;
@@ -27,7 +116,317 @@
     }
 
     S.use('gallery/tip/1.0/index', function (S, Tip) {
-         var tip = new Tip("#tip");
+		var init = function(){
+
+			new Tip('#tip1',{
+				headerText:'跟随鼠标定位',
+				contentText:'鼠标定位点为左下角，默认mouseHook:true',
+				delayIn:100
+			});
+
+			new Tip('#tip2',{
+				headerText:'相对定位',
+				contentText:'points:["tl","br"],mouseHook:false',
+				points:['tl','br'],
+				mouseHook:false,
+				delayIn:100
+			});
+
+			new Tip('#tip3',{
+				headerText:'相对定位',
+				contentText:'不需要箭头,points:["tr","bl"],arrow:false',
+				points:['tr','bl'],
+				mouseHook:false,
+				arrow:false,
+				delayIn:100
+			});
+
+			new Tip('#tip4',{
+				headerText:'相对定位',
+				contentText:'带箭头,points:["tr","bl"],arrow:true',
+				points:['tl','bl'],
+				offsetX:-15,
+				mouseHook:false,
+				delayIn:100
+			});
+
+			new Tip('#tip5',{
+				headerText:'相对定位',
+				contentText:'points:["lb","tr"],arrow:false',
+				points:['lb','tr'],
+				mouseHook:false,
+				arrow:false,
+				delayIn:100
+			});
+
+			new Tip('#tip6',{
+				headerText:'定位到很远',
+				contentText:'points:["lb","tr"],offsetX:-123',
+				points:['lb','tr'],
+				mouseHook:false,
+				offsetX:-132,
+				arrow:false,
+				delayIn:100
+			});
+
+			new Tip('#tip7',{
+				headerText:'鼠标跟随定位',
+				contentText:'跟随鼠标移动而移动 withMouseMove:true',
+				withMouseMove:true,
+				arrow:false,
+				delayIn:100
+			});
+
+			new Tip('#tip8',{
+				contentText:'没有标题,headerText:""',
+				arrow:false,
+				delayIn:100
+			});
+
+			new Tip('#tip9',{
+				headerText:'没有正文,contentText:""',
+				contentText:'',
+				arrow:false,
+				delayIn:100
+			});
+
+			new Tip('#tip10',{
+				headerText:'定义offsetX和offsetY',
+				contentText:'points:["lb","tr"],offsetX:-20,offsetY:-100',
+				mouseHook:false,
+				offsetX:-30,
+				offsetY:-100,
+				points:['lb','tr'],
+				arrow:false,
+				delayIn:100
+			});
+
+			new Tip('#tip11',{
+				headerText:'鼠标跟随的offsetX和offsetY',
+				contentText:'withMouseMove:true,offsetX:-20,offsetY:-100',
+				withMouseMove:true,
+				offsetX:-30,
+				offsetY:-100,
+				arrow:false,
+				delayIn:100
+			});
+
+			new Tip('#tip12',{
+				headerText:'带箭头的offsetX和offsetY',
+				contentText:'arrow:true,points:["lb","tr"],offsetX:-120,offsetY:-30',
+				withMouseMove:true,
+				mouseHook:false,
+				arrow:true,
+				offsetX:-128,
+				offsetY:-30,
+				points:['tc','bc'],
+				delayIn:100,
+				smarty:false
+			});
+
+			new Tip('#simpletip');
+
+			new Tip('#t1',{
+				contentText:'鼠标可以移入Tip',
+				fleeting:false,
+				delayIn:100
+			});
+
+			new Tip('#t2',{
+				contentText:'鼠标不可以移入Tip',
+				delayIn:100
+			});
+
+			// 自定义样式
+
+			new Tip('#rich1',{
+				headerText:'Close buttons',
+				contentText:'Close buttons are very easy to create using two PNG images. One for the normal state and another for the mouseover state.',
+				arrow:false,
+				points:['tc','bc'],
+				tipClass:'custom-tip-style',
+				// closeable:true,
+				delayIn:100
+			});
+
+			new Tip('#rich2',{
+				headerText:'Close buttons',
+				contentText:'Close buttons are very easy to create using two PNG images. ',
+				showOn:'click',
+				hideOn:'',
+				mouseHook:false,
+				arrow:false,
+				points:['bl','tl'],
+				closeable:true,
+				delayIn:0
+			});
+
+			new Tip('#rich3',{
+				headerText:'Close buttons',
+				contentText:'Close buttons are very easy to create using two PNG images. ',
+				showOn:'click',
+				effect:'slide',
+				hideOn:'',
+				mouseHook:false,
+				arrow:false,
+				offsetY:-13,
+				points:['bl','tl'],
+				closeable:true,
+				delayIn:0
+			});
+
+			new Tip('#rich4',{
+				headerText:'Close buttons',
+				contentText:'当触碰点获得焦点时，显示Tip弹层',
+				showOn:'focus',
+				hideOn:'',
+				mouseHook:false,
+				arrow:false,
+				points:['bc','tc'],
+				closeable:true,
+				delayIn:0
+			});
+
+			new Tip('#rich5',{
+				headerText:'Close buttons',
+				contentText:'点击触碰点时，显示Tip弹层，只能点击关闭按钮关闭tip',
+				showOn:'focus',
+				hideOnEmptyClick:false,
+				hideOn:'',
+				mouseHook:false,
+				arrow:false,
+				points:['bc','tc'],
+				closeable:true,
+				delayIn:0
+			});
+
+			var t = new Tip('#rich6',{
+				headerText:'Ajax loading',
+				showOn:'click',
+				hideOn:'',
+				mouseHook:false,
+				arrow:true,
+				points:['bc','tc'],
+				closeable:true,
+				delayIn:0,
+				staticContent:true,
+				smarty:true,
+				getConentText:function(target){
+					var self = this;
+					self.setContent('<img src="http://loadinggif.com/images/image-selection/8.gif" /><br />Loading Data,please waite');
+					self.rePosition();
+					setTimeout(function(){
+						self.setContent('<img width=232 src="http://img04.taobaocdn.com/imgextra/i1/253285776/T2SRK.XopXXXXXXXXX_!!253285776.jpg" />');
+						// self.rerender();
+						self.rePosition();
+					},1000);
+				},
+				revise:function(arrowPos){
+					var self = this;
+					var al = (self.popup.get('align'));
+					var offset = 15;
+					var a = al.offset;
+					switch(arrowPos){
+						case 'lt':
+						case 'rt':
+							a[1] -= offset;
+							break;
+						case 'lb':
+						case 'rb':
+							a[1] += offset;
+							break;
+					}
+				}
+			});
+			t.on('show',function(t){
+
+			});
+
+			new Tip('#rich7',{
+				delayIn:1000
+			});
+
+			new Tip('#rich8',{
+				headerText:'resizing',
+				showOn:'click',
+				hideOn:'',
+				mouseHook:false,
+				arrow:true,
+				points:['tc','bc'],
+				closeable:true,
+				delayIn:0,
+				staticContent:false,
+				smarty:false,
+				getConentText:function(target){
+					var self = this;
+					self.setContent('<div id="myResise"><img style="width:130px; height:auto;" src="http://img04.taobaocdn.com/imgextra/i1/253285776/T2SRK.XopXXXXXXXXX_!!253285776.jpg" /></div>');
+					var con = S.one('#myResise');
+					var resize = function(){
+						con.one('img').css('width',con.one('img').width()+10+'px');
+					};
+					self.rePosition();
+
+					var count = 0;
+					var f = function(){
+						// self.rerender();
+						if(count++ >= 10){
+							return;
+						}
+						resize();
+						self.rePosition();
+						setTimeout(function(){
+							f();	
+						},1000);
+					};
+
+					f();
+				}
+			});
+
+			new Tip('#rich9',{
+				headerText:'resizing',
+				showOn:'click',
+				hideOn:'',
+				mouseHook:false,
+				arrow:true,
+				points:['tc','bc'],
+				closeable:true,
+				delayIn:0,
+				staticContent:false,
+				smarty:true,
+				getConentText:function(target){
+					var self = this;
+					self.setContent('<div id="myResise1"><img style="width:130px; height:auto;" src="http://img04.taobaocdn.com/imgextra/i1/253285776/T2SRK.XopXXXXXXXXX_!!253285776.jpg" /></div>');
+					var con = S.one('#myResise1');
+					var resize = function(){
+						con.one('img').css('width',con.one('img').width()+10+'px');
+					};
+					self.rerender();
+					self.rePosition();
+
+					var count = 0;
+					var f = function(){
+						// self.rerender();
+						if(count++ >= 10){
+							return;
+						}
+						resize();
+						self.rerender();
+						self.rePosition();
+						setTimeout(function(){
+							f();	
+						},1000);
+					};
+
+					f();
+				}
+			});
+		};
+
+		S.ready(function(){
+			init();	
+		});
+        // var tip = new Tip("#tip");
     })
 </script>
 </body>
