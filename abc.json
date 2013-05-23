@@ -1,7 +1,7 @@
 {
     "name": "tip",
     "version": "1.0",
-    "desc": "请修改组件描述",
+    "desc": "mini提示层",
     "cover": "",
     "author": {
         "name": "xijian.py",
