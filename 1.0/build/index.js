@@ -572,7 +572,6 @@ KISSY.add('gallery/tip/1.0/index',function(S){
 			var self = this;
 
 			if(!self.mouseHook){
-				console.log(self.target);
 				self.popup.set('align',{
 					node:self.target,
 					points:self.points,
